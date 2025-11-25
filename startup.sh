@@ -24,6 +24,7 @@ EOL
 
 echo "DBT_PROFILES_DIR=${PROJECT_DIR}/.dbt" >> .env
 echo "export UV_ENV_FILE=${PROJECT_DIR}/.env" >> .venv/bin/activate
+echo "export DBT_PROFILES_DIR=${PROJECT_DIR}/.dbt" >> .venv/bin/activate
 
 mkdir .dbt
 touch .dbt/profiles.yml
