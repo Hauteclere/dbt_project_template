@@ -60,9 +60,10 @@ version: 2
 
 sources:
 - name: dev_db
-    schema: main
-    tables:
-#   - name: <insert_name_here>
+  schema: main
+  tables:
+# - name: <insert_table_name_here>
+
 EOL
 
 rm -- "$0"
