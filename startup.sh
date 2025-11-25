@@ -22,16 +22,15 @@ cat >> .gitignore <<EOL
 .env
 EOL
 
-DBT_PROFILES_DIR="${PROJECT_DIR}/.dbt"
-echo "DBT_PROFILES_DIR=${DBT_PROFILES_DIR}" >> .env
-echo 'export UV_ENV_FILE="${PROJECT_DIR}/.env"' >> .venv/bin/activate
+echo "DBT_PROFILES_DIR=${PROJECT_DIR}/.dbt" >> .env
+echo "export UV_ENV_FILE=${PROJECT_DIR}/.env" >> .venv/bin/activate
 
 mkdir .dbt
 touch .dbt/profiles.yml
 
-uv run --env-file .env dbt init $PROJECT_NAME
-mv $PROJECT_NAME/*
-rm -r $PROJECT_NAME
+uv run --env-file .env dbt init "${PROJECT_NAME}"
+mv ${PROJECT_NAME}/*
+rm -r ${PROJECT_NAME}
 
 cat > ./dbt_project.yml <<EOL
 name: ${PROJECT_NAME}
@@ -49,8 +48,7 @@ with duckdb.connect("dev.duckdb") as con:
     pass
 EOL
 
-
-uv run create_db.py
+uv run --env-file .env create_db.py
 
 rm create_db.py
 
