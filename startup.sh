@@ -16,7 +16,7 @@ if ! command -v uv >/dev/null 2>&1; then
 fi
 
 uv init .
-uv add dbt-duckdb duckdb
+uv add dbt-duckdb
 cat >> .gitignore <<EOL
 *.duckdb
 .env
